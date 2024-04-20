@@ -1,0 +1,15 @@
+const { remote } = require('webdriverio');
+
+(async () => {
+  const browser = await remote({
+    capabilities: {
+      browserName: 'chrome'
+    }
+  });
+
+  await browser.url('https://www.saucedemo.com');
+  const title = await browser.getTitle();
+  console.log('Title:', title);
+
+  await browser.deleteSession();
+})();
